@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Kudos{% endblock %}
+
+{% block content %}
+  <h1 class="mb-4">{{user.username}} - {{user.organization}}</h1>
+
+  {% if user.kudos_left %}
+    <a href="{% url 'kudos:send_kudos' %}" class="btn btn-primary mb-4">Send kudos</a>
+  {% endif %}
+
+  <h2 class="mb-4">Kudos received</h2>
+
+  <ul>
+    {% for kudos in kudos_list %}
+      <li>Received from {{ kudos.sender }} on {{ kudos.created }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
